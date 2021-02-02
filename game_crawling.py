@@ -49,6 +49,7 @@ for input_year in range(2021,2022,1):
         ## 날짜, 시간, 경기 팀 2개, 점수, 구장
         container = driver.find_elements_by_css_selector("tbody tr")
 
+        schedule = []
 
         for c in container:
             game = {}
@@ -66,8 +67,9 @@ for input_year in range(2021,2022,1):
             place = c.find_elements_by_css_selector("td")[-2].text
 
             game = {'date' : date, 'time' : time, 'team1' : team1, 'team2' : team2, 'place' : place}
+            schedule.append(game)
             with open('schedule.json', 'w', encoding="utf-8") as make_file:
-                json.dump(game, make_file, ensure_ascii=False, indent="\t")
+                json.dump(schedule, make_file, ensure_ascii=False, indent="\t")
                 
             print("%s %s %s vs %s , %s" %(date, time, team1, team2, place))
             sheet.append([str(input_year)+"-"+date.split(".")[0]+"-"+date.split(".")[1].split("(")[0],time+":00",team1,team2,place])
