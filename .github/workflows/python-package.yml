@@ -5,7 +5,7 @@ name: spot-crawler
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '0 0 * * *'
   push:
     branches: [ master ]
   pull_request:
@@ -38,7 +38,6 @@ jobs:
         sudo apt-get install fonts-unfonts-extra
         wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add        
         sudo apt-get install google-chrome-stable    
-        wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip
         unzip ./chromedriver_linux64.zip
     - name: run
       run: |
