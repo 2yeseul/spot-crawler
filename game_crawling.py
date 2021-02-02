@@ -6,8 +6,16 @@ wb = openpyxl.Workbook()
 sheet = wb.active
 sheet.append(['날짜','시간','팀1','팀2','장소','사유'])
 
+options = webdriver.ChromeOptions()
+options.add_argument("start-maximized")
+options.add_argument("lang=ko_KR")
+options.add_argument('headless')
+options.add_argument('window-size=1920x1080')
+options.add_argument("disable-gpu")
+options.add_argument("--no-sandbox")
+
 # 웹드라이버 켜기
-driver = webdriver.Chrome('chromedriver')
+driver = webdriver.Chrome('chromedriver', chrome_options=options )
 
 # 야구 경기 사이트 접속하기
 driver.get("https://www.koreabaseball.com/Schedule/Schedule.aspx")
