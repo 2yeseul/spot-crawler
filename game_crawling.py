@@ -14,7 +14,7 @@ driver.get("https://www.koreabaseball.com/Schedule/Schedule.aspx")
 
 # 일정 검색 버튼 누르기
 
-for input_year in range(2020,2021,1):
+for input_year in range(2021,2022,1):
     ##년도 선택
     year_select = driver.find_element_by_css_selector("select#ddlYear")
     for option in year_select.find_elements_by_tag_name('option'):
@@ -22,7 +22,7 @@ for input_year in range(2020,2021,1):
             option.click()
             break
 
-    for input_month in ["09","10","11","12"]:
+    for input_month in ["04","05","06","07","08","09","10","11","12"]:
         ##월 선택
         month_select = driver.find_element_by_css_selector("select#ddlMonth")
         for option in month_select.find_elements_by_tag_name('option'):
