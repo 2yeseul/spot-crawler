@@ -37,6 +37,7 @@ for input_year in range(2021,2022,1):
     for input_month in ["04","05","06","07","08","09","10","11","12"]:
         ##월 선택
         month_select = driver.find_element_by_css_selector("select#ddlMonth")
+        schedule = []
         for option in month_select.find_elements_by_tag_name('option'):
             print("0"+str(input_month))
             if option.text == input_month: #월 입력
@@ -49,7 +50,6 @@ for input_year in range(2021,2022,1):
         ## 날짜, 시간, 경기 팀 2개, 점수, 구장
         container = driver.find_elements_by_css_selector("tbody tr")
 
-        schedule = []
 
         for c in container:
             game = {}
