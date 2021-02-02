@@ -7,8 +7,7 @@ sheet = wb.active
 sheet.append(['날짜','시간','팀1','팀2','장소','사유'])
 
 # 웹드라이버 켜기
-driver = webdriver.Chrome('chromedriver', chrome_options=options)
-driver.implicitly_wait(3)    
+driver = webdriver.Chrome('chromedriver')
 
 # 야구 경기 사이트 접속하기
 driver.get("https://www.koreabaseball.com/Schedule/Schedule.aspx")
