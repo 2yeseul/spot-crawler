@@ -1,5 +1,6 @@
 from selenium import webdriver
 import openpyxl
+import json
 
 #컬럼 순서 변경, 팀명을 idx로 바꾸기
 wb = openpyxl.Workbook()
@@ -19,6 +20,9 @@ driver = webdriver.Chrome('chromedriver', chrome_options=options )
 
 # 야구 경기 사이트 접속하기
 driver.get("https://www.koreabaseball.com/Schedule/Schedule.aspx")
+
+temp_list = []
+temp_dict = {}
 
 # 일정 검색 버튼 누르기
 
@@ -47,6 +51,7 @@ for input_year in range(2021,2022,1):
 
 
         for c in container:
+            game = {}
             try:
                 date = c.find_element_by_css_selector("td.day").text
             except:
@@ -60,6 +65,10 @@ for input_year in range(2021,2022,1):
             team2 = c.find_elements_by_css_selector("td.play>span")[1].text
             place = c.find_elements_by_css_selector("td")[-2].text
 
+            game = {'date' : date, 'time' : time, 'team1' : team1, 'team2' : team2, 'place' : place}
+            with open('schedule.json', 'w', encoding="utf-8") as make_file:
+                json.dump(game, make_file, ensure_ascii=False, indent="\t")
+                
             print("%s %s %s vs %s , %s" %(date, time, team1, team2, place))
             sheet.append([str(input_year)+"-"+date.split(".")[0]+"-"+date.split(".")[1].split("(")[0],time+":00",team1,team2,place])
 
