@@ -32,6 +32,7 @@ jobs:
         python -m pip install selenium
         python -m pip install openpyxl
         python -m pip install requests
+        python -m pip install json
     - name: Install ubuntu packages
       run: |
         sudo apt-get install fonts-unfonts-core
