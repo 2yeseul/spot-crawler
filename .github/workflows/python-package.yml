@@ -42,7 +42,7 @@ jobs:
         unzip ./chromedriver_linux64.zip
     - name: run
       run: |
-        python "game_crawling.py"
+        python ./game_crawling.py
     - name: commit
       run: |
         git config --local user.email "20152917@sungshin.ac.kr"
