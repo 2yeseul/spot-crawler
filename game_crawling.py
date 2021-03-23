@@ -19,7 +19,7 @@ options.add_argument("--no-sandbox")
 driver = webdriver.Chrome('chromedriver', chrome_options=options )
 
 # 야구 경기 사이트 접속하기
-driver.get("https://www.koreabaseball.com/Schedule/Schedule.aspx")
+driver.get("https://www.koreabaseball.com/Schedule/Schedule.aspx?seriesId=0,9")
 
 
 # 일정 검색 버튼 누르기
